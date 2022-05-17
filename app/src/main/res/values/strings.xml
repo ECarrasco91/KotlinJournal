@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Kotlin Journal</string>
+    <string name="fab_content_description">Add Journal Post</string>
 </resources>
