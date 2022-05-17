@@ -5,4 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.journal.JournalFragment">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/journal_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/journal_list_item_layout"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
