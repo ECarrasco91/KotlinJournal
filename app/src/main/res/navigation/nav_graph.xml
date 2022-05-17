@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/JournalFragment">
+
+    <fragment
+        android:id="@+id/JournalFragment"
+        android:name="com.ezequielc.kotlinjournal.ui.journal.JournalFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_journal" >
+
+        <action
+            android:id="@+id/action_JournalFragment_to_AddEditJournalFragment"
+            app:destination="@id/AddEditJournalFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/AddEditJournalFragment"
+        android:name="com.ezequielc.kotlinjournal.ui.addeditjournal.AddEditJournalFragment"
+        android:label="fragment_add_edit_journal"
+        tools:layout="@layout/fragment_add_edit_journal" >
+
+        <action
+            android:id="@+id/action_AddEditJournalFragment_to_JournalFragment"
+            app:destination="@id/JournalFragment" />
+    </fragment>
+</navigation>
