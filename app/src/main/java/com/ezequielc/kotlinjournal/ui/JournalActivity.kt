@@ -38,7 +38,9 @@ class JournalActivity : AppCompatActivity(), NavController.OnDestinationChangedL
         navController.addOnDestinationChangedListener(this)
 
         binding.fab.setOnClickListener {
-            val direction = JournalFragmentDirections.actionJournalFragmentToAddEditJournalFragment()
+            val title = it.context.resources.getString(R.string.new_journal_post)
+            val direction = JournalFragmentDirections
+                .actionJournalFragmentToAddEditJournalFragment(title = title)
             navController.navigate(direction)
         }
     }

@@ -5,4 +5,5 @@
     <string name="post_hint">Post</string>
     <string name="action_delete_all">Delete all journal posts</string>
     <string name="created_text">Created: %1$s</string>
+    <string name="new_journal_post">New Journal Post</string>
 </resources>

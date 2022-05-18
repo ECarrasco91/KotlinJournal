@@ -36,6 +36,10 @@ class JournalFragment : Fragment() {
                 layoutManager = LinearLayoutManager(requireContext())
             }
         }
+
+        journalViewModel.posts.observe(viewLifecycleOwner) {
+            journalAdapter.submitList(it)
+        }
     }
 
     override fun onDestroyView() {

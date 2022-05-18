@@ -20,11 +20,19 @@
     <fragment
         android:id="@+id/AddEditJournalFragment"
         android:name="com.ezequielc.kotlinjournal.ui.addeditjournal.AddEditJournalFragment"
-        android:label="fragment_add_edit_journal"
+        android:label="{title}"
         tools:layout="@layout/fragment_add_edit_journal" >
 
         <action
             android:id="@+id/action_AddEditJournalFragment_to_JournalFragment"
             app:destination="@id/JournalFragment" />
+        <argument
+            android:name="journal_item"
+            android:defaultValue="@null"
+            app:argType="com.ezequielc.kotlinjournal.data.JournalItem"
+            app:nullable="true" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 </navigation>
