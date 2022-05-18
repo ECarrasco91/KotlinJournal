@@ -7,4 +7,6 @@
     <string name="created_text">Created: %1$s</string>
     <string name="new_journal_post">New Journal Post</string>
     <string name="edit_journal_post">Edit Journal Post</string>
+    <string name="journal_post_deleted">Journal Post Deleted</string>
+    <string name="undo_text">UNDO</string>
 </resources>
