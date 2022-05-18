@@ -9,7 +9,7 @@ import com.ezequielc.kotlinjournal.R
 import com.ezequielc.kotlinjournal.data.JournalItem
 import com.ezequielc.kotlinjournal.databinding.JournalListItemLayoutBinding
 
-class JournalAdapter :
+class JournalAdapter(private val listener: OnItemClickListener) :
     ListAdapter<JournalItem, JournalAdapter.JournalViewHolder>(JournalComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): JournalViewHolder {
@@ -22,7 +22,7 @@ class JournalAdapter :
         holder.bind(getItem(position))
     }
 
-    class JournalViewHolder(private val binding: JournalListItemLayoutBinding) :
+    inner class JournalViewHolder(private val binding: JournalListItemLayoutBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
             fun bind(item: JournalItem) {
@@ -34,6 +34,10 @@ class JournalAdapter :
                     itemTimestampTextView.apply {
                         val res = context.resources
                         text = res.getString(R.string.created_text, item.timestampFormatted)
+                    }
+
+                    root.setOnClickListener {
+                        listener.onItemClick(item)
                     }
                 }
             }

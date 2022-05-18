@@ -6,4 +6,5 @@
     <string name="action_delete_all">Delete all journal posts</string>
     <string name="created_text">Created: %1$s</string>
     <string name="new_journal_post">New Journal Post</string>
+    <string name="edit_journal_post">Edit Journal Post</string>
 </resources>
