@@ -1,9 +1,8 @@
 package com.ezequielc.kotlinjournal.ui.addeditjournal
 
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.ezequielc.kotlinjournal.Event
+import com.ezequielc.kotlinjournal.R
 import com.ezequielc.kotlinjournal.data.JournalDao
 import com.ezequielc.kotlinjournal.data.JournalItem
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,6 +14,12 @@ class AddEditJournalViewModel @Inject constructor(
     private val journalDao: JournalDao,
     private val state: SavedStateHandle
 ) : ViewModel() {
+
+    // Snackbar message to be displayed based on Event, whether
+    // JournalItem is added, updated or to handle empty post field
+    private val _snackbartext = MutableLiveData<Event<Int>>()
+    val snackbarMessage: LiveData<Event<Int>>
+        get() = _snackbartext
 
     // SavedStateHandle handles configuration changes, ex. rotations, etc.
     val journalItem = state.get<JournalItem>("journal_item")
@@ -42,15 +47,18 @@ class AddEditJournalViewModel @Inject constructor(
         }
 
         if (journalPost.isBlank()) {
-            // TODO: Implement invalid input functionality
+            showSnackbarMessage(R.string.empty_post_message)
+            return
         }
 
         if (journalItem != null) {
             val updatedJournalItem = journalItem.copy(title = journalTitle, post = journalPost)
             updateJournalItem(updatedJournalItem)
+            showSnackbarMessage(R.string.journal_post_updated)
         } else {
             val newJournalItem = JournalItem(title = journalTitle, post = journalPost)
             insertJournalItem(newJournalItem)
+            showSnackbarMessage(R.string.journal_post_added)
         }
     }
 
@@ -60,5 +68,9 @@ class AddEditJournalViewModel @Inject constructor(
 
     private fun insertJournalItem(journalItem: JournalItem) = viewModelScope.launch {
         journalDao.insert(journalItem)
+    }
+
+    private fun showSnackbarMessage(message: Int) {
+        _snackbartext.value = Event(message)
     }
 }

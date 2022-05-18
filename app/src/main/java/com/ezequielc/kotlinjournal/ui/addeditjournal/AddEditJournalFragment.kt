@@ -10,9 +10,13 @@ import android.view.inputmethod.EditorInfo
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
 import androidx.navigation.fragment.findNavController
+import com.ezequielc.kotlinjournal.Event
 import com.ezequielc.kotlinjournal.R
 import com.ezequielc.kotlinjournal.databinding.FragmentAddEditJournalBinding
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -77,11 +81,28 @@ class AddEditJournalFragment : Fragment() {
                 }
             }
         }
+
+        addEditJournalViewModel.let {
+            view.setupSnackbar(this, it.snackbarMessage)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    // Setup of snackbar to be displayed based on Event from ViewModel
+    fun View.setupSnackbar(
+        lifecycleOwner: LifecycleOwner,
+        snackbarEvent: LiveData<Event<Int>>
+    ) {
+        snackbarEvent.observe(lifecycleOwner) { event ->
+            event.getContentIfNotHandled().let { resourceId ->
+                val message = context.getString(resourceId!!)
+                Snackbar.make(requireView(), message, Snackbar.LENGTH_LONG).show()
+            }
+        }
     }
 
 }

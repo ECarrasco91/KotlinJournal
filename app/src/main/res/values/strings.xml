@@ -9,4 +9,7 @@
     <string name="edit_journal_post">Edit Journal Post</string>
     <string name="journal_post_deleted">Journal Post Deleted</string>
     <string name="undo_text">UNDO</string>
+    <string name="empty_post_message">Post field cannot be empty</string>
+    <string name="journal_post_updated">Journal Post Updated</string>
+    <string name="journal_post_added">Journal Post Added</string>
 </resources>
