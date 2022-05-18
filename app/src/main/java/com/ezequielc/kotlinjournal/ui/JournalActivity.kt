@@ -14,6 +14,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.ezequielc.kotlinjournal.R
 import com.ezequielc.kotlinjournal.databinding.ActivityJournalBinding
+import com.ezequielc.kotlinjournal.ui.dialog.DeleteAllDialogFragment
 import com.ezequielc.kotlinjournal.ui.journal.JournalFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -53,7 +54,8 @@ class JournalActivity : AppCompatActivity(), NavController.OnDestinationChangedL
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_delete_all -> {
-                // TODO: Implement DeleteAllDialogFragment()
+                val dialog = DeleteAllDialogFragment()
+                dialog.show(supportFragmentManager, "DeleteAllDialogFragment")
                 true
             }
             else -> super.onOptionsItemSelected(item)

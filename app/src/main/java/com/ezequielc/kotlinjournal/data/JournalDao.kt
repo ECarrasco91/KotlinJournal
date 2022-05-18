@@ -15,6 +15,9 @@ interface JournalDao {
     @Delete
     suspend fun delete(journalItem: JournalItem)
 
+    @Query("DELETE FROM journal_table")
+    suspend fun deleteAllPosts()
+
     @Query("SELECT * FROM journal_table")
     fun getJournalItems(): Flow<List<JournalItem>>
 }

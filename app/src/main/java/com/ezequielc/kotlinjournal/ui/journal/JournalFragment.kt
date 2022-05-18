@@ -42,6 +42,8 @@ class JournalFragment : Fragment(), OnItemClickListener {
                 layoutManager = LinearLayoutManager(requireContext())
             }
 
+            // Implemented ItemTouchHelper to be able to swipe item
+            // left and right to delete journal post
             ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0,
                 ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
                 override fun onMove(
