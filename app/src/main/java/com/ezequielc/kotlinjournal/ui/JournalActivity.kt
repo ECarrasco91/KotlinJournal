@@ -76,8 +76,8 @@ class JournalActivity : AppCompatActivity(), NavController.OnDestinationChangedL
         val journalDestination = controller.graph[R.id.JournalFragment]
         val addEditJournalDestination = controller.graph[R.id.AddEditJournalFragment]
         when (destination) {
-            journalDestination -> binding.fab.visibility = View.VISIBLE
-            addEditJournalDestination -> binding.fab.visibility = View.INVISIBLE
+            journalDestination -> binding.fab.show()
+            addEditJournalDestination -> binding.fab.hide()
         }
     }
 }

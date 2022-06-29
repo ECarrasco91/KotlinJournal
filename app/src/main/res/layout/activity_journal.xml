@@ -28,6 +28,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:contentDescription="@string/fab_content_description"
         android:src="@drawable/ic_add_white"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
         app:tint="@null" />
 
     <include layout="@layout/content_main" />
